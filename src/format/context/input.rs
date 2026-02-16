@@ -99,7 +99,7 @@ impl Input {
         unsafe { (*self.as_ptr()).probe_score }
     }
 
-    pub fn packets(&mut self) -> PacketIter {
+    pub fn packets(&mut self) -> PacketIter<'_> {
         PacketIter::new(self)
     }
 
@@ -178,7 +178,7 @@ pub struct PacketIter<'a> {
 }
 
 impl<'a> PacketIter<'a> {
-    pub fn new(context: &mut Input) -> PacketIter {
+    pub fn new(context: &mut Input) -> PacketIter<'_> {
         PacketIter { context }
     }
 }
